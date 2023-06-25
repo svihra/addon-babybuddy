@@ -38,7 +38,7 @@ schema:
   USE_24_HOUR_TIME_FORMAT: bool
   INGRESS_USER: str
   log_level: list(debug|info|warning|error|critical)
-  DB_ENGINE: list("django.db.backends.postgresql","django.db.backends.mysql","django.db.backends.sqlite3","django.db.backends.oracle",)
+  DB_ENGINE: list("django.db.backends.postgresql"|"django.db.backends.mysql"|"django.db.backends.sqlite3"|"django.db.backends.oracle")
   DB_HOST: str
   DB_NAME: str
   DB_PASSWORD: str
