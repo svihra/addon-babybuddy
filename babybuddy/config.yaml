@@ -25,6 +25,12 @@ options:
   USE_24_HOUR_TIME_FORMAT: False
   INGRESS_USER: ""
   log_level: info
+  DB_ENGINE: ""
+  DB_HOST: ""
+  DB_NAME: ""
+  DB_PASSWORD: ""
+  DB_PORT: ""
+  DB_USER: ""
 schema:
   CSRF_TRUSTED_ORIGINS: str
   NAP_START_MIN: str
@@ -32,6 +38,12 @@ schema:
   USE_24_HOUR_TIME_FORMAT: bool
   INGRESS_USER: str
   log_level: list(debug|info|warning|error|critical)
+  DB_ENGINE: list("django.db.backends.postgresql","django.db.backends.mysql","django.db.backends.sqlite3","django.db.backends.oracle",)
+  DB_HOST: str
+  DB_NAME: str
+  DB_PASSWORD: str
+  DB_PORT: str
+  DB_USER: str
 ports:
   8000/tcp: null
 ports_description:
