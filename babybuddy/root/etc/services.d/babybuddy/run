@@ -33,6 +33,17 @@ if bashio::config.has_value "INGRESS_USER"; then
         PROXY_HEADER=HTTP_X_REMOTE_USER
 fi
 
+if bashio::config.has_value "DB_HOST"; then
+    bashio::log.info 'Running with user defined database'
+    export \
+        DB_ENGINE=$(bashio::config "DB_ENGINE") \
+        DB_HOST=$(bashio::config "DB_HOST") \
+        DB_NAME=$(bashio::config "DB_NAME") \
+        DB_PASSWORD=$(bashio::config "DB_PASSWORD") \
+        DB_PORT=$(bashio::config "DB_PORT") \
+        DB_USER=$(bashio::config "DB_USER")
+fi
+
 exec \
     s6-setuidgid root gunicorn babybuddy.wsgi "${options[@]}"
 
