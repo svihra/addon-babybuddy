@@ -24,6 +24,18 @@ export \
     TIME_ZONE="${TZ:-UTC}" \
     DEBUG="${DEBUG:-False}" \
     SECRET_KEY="${SECRET_KEY:-`cat /config/.secretkey`}"
+
+bashio::log.info 'Checking for DB setup'
+if bashio::config.has_value "DB_HOST"; then
+    bashio::log.info 'Running with user defined database'
+    export \
+        DB_ENGINE=$(bashio::config "DB_ENGINE") \
+        DB_HOST=$(bashio::config "DB_HOST") \
+        DB_NAME=$(bashio::config "DB_NAME") \
+        DB_PASSWORD=$(bashio::config "DB_PASSWORD") \
+        DB_PORT=$(bashio::config "DB_PORT") \
+        DB_USER=$(bashio::config "DB_USER")
+fi
 python3 manage.py migrate --noinput 
 python3 manage.py createcachetable
 
