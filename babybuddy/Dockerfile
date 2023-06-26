@@ -17,6 +17,7 @@ RUN \
   libffi-dev \
   libxml2-dev \
   libxslt-dev \
+  mariadb-dev \
   postgresql-dev \
   python3-dev \
   zlib-dev
@@ -32,6 +33,7 @@ RUN \
   libxslt \
   py3-mysqlclient \
   py3-pip \
+  mariadb-connector-c \
   python3 \
   nginx
 
@@ -50,7 +52,8 @@ RUN \
   cd /app/babybuddy && \
   pip3 install -U --no-cache-dir \
   pip && \
-  pip install -U --ignore-installed -r requirements.txt
+  pip install -U --ignore-installed -r requirements.txt \
+  pip install -U mysqlclient
 
 RUN \
   echo "**** cleanup ****" && \
